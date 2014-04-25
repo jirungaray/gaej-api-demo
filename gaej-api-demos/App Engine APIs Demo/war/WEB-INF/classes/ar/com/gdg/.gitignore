@@ -1,0 +1,9 @@
+/App_Engine_APIs_DemoServlet.class
+/CacheDeleteServlet.class
+/CacheSaveServlet.class
+/CapabilitiesServlet.class
+/CronServlet.class
+/QueueConsumerServlet.class
+/QueueProducerServlet.class
+/RecieveMailServlet.class
+/SendMailServlet.class

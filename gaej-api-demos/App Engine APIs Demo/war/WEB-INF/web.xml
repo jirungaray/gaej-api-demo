@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<servlet>
+		<servlet-name>App_Engine_APIs_Demo</servlet-name>
+		<servlet-class>ar.com.gdg.App_Engine_APIs_DemoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>App_Engine_APIs_Demo</servlet-name>
+		<url-pattern>/app_engine_apis_demo</url-pattern>
+	</servlet-mapping>
+
+	<!-- CACHE -->
+	<servlet>
+		<servlet-name>cache</servlet-name>
+		<servlet-class>ar.com.gdg.CacheSaveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cache</servlet-name>
+		<url-pattern>/cachesave</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>cachedelete</servlet-name>
+		<servlet-class>ar.com.gdg.CacheDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cachedelete</servlet-name>
+		<url-pattern>/deletecache</url-pattern>
+	</servlet-mapping>
+	<!-- /CACHE -->
+
+	<!-- MAIL -->
+	<servlet>
+		<servlet-name>recievemail</servlet-name>
+		<servlet-class>ar.com.gdg.RecieveMailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>recievemail</servlet-name>
+		<url-pattern>/_ah/mail/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>sendmail</servlet-name>
+		<servlet-class>ar.com.gdg.SendMailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sendmail</servlet-name>
+		<url-pattern>/sendmail</url-pattern>
+	</servlet-mapping>
+	<!-- /Mail -->
+	<!-- Queues -->
+	<servlet>
+		<servlet-name>queueProducer</servlet-name>
+		<servlet-class>ar.com.gdg.QueueProducerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>queueProducer</servlet-name>
+		<url-pattern>/queueTask</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>queueConsumer</servlet-name>
+		<servlet-class>ar.com.gdg.QueueConsumerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>queueConsumer</servlet-name>
+		<url-pattern>/_ah/queue/default</url-pattern>
+	</servlet-mapping>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>queueConsumer</web-resource-name>
+			<url-pattern>/_ah/queue/default</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<!-- /Queues -->
+
+	<!-- CRON -->
+	<servlet>
+		<servlet-name>cronService</servlet-name>
+		<servlet-class>ar.com.gdg.CronServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cronService</servlet-name>
+		<url-pattern>/cron/updateTime</url-pattern>
+	</servlet-mapping>
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/cron/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<!-- /CRON -->
+	<!-- CAPABILITIES -->
+	<servlet>
+		<servlet-name>serviceStatus</servlet-name>
+		<servlet-class>ar.com.gdg.CapabilitiesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>serviceStatus</servlet-name>
+		<url-pattern>/dashboard</url-pattern>
+	</servlet-mapping>
+	<!-- /CAPABILITIES -->
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+
+</web-app>
