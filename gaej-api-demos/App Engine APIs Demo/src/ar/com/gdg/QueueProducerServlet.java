@@ -26,6 +26,7 @@ public class QueueProducerServlet extends HttpServlet {
 				"mail", req.getParameter("mailField"));
 		int amount = Integer.parseInt(req.getParameter("amountField"));
 		for (int i = 0; i < amount; i++) {
+			taskOptions.removeParam("order");
 			queue.add(taskOptions.param("order", ""+i));
 		}
 
